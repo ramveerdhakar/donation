@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success Invoice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .payment-done {
+            text-align: center;
+        }
+
+        .payment {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-done .payment img {
+            width: 60px;
+            padding: 10px;
+        }
+
+        .payment-done p {
+            padding-bottom: 10px;
+        }
+
+        .container-wrap {
+            background: #edecf7;
+            width: 650px;
+            padding: 40px;
+        }
+
+        .payment-invoice {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .billing h2 {
+            margin: 10px 0px;
+        }
+
+        .billing-item {
+            padding-bottom: 10px;
+        }
+
+        .billing-item h3 {
+            padding-bottom: 2px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 30px;
+            padding-right: 40px;
+        }
+
+        th {
+            width: 80%;
+            text-align: left;
+        }
+
+        @media screen and (max-width: 650px) {
+
+            .container-wrap {
+                width: 100vw;
+                padding: 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="payment-done">
+            <div class="payment">
+                <img src="/images/done-icon.svg" alt="">
+                <span>Payment Done</span>
+            </div>
+            <p>Email has been sent to you for recieved payment.</p>
+        </div>
+        <div class="container-wrap">
+            <div class="payment-invoice">
+                <div class="logo">
+                    <h1>Child Foundation</h1>
+                </div>
+                <div class="invoice-details">
+                    <h3>Payment Invoice</h3>
+                    <p>Invoice Number: <span id="invoice"></span></p>
+                    <p>Issued Date: <span id="date"></span></p>
+                    <p>Issued Time: <span id="time"></span></p>
+                </div>
+            </div>
+            <hr>
+
+            <div class="billing">
+                <h2>Bill to:</h2>
+                <div class="billing-item">
+                    <h3>Company Name</h3>
+                    <p>Child Foundation</p>
+                </div>
+                <div class="billing-item">
+                    <h3>Address</h3>
+                    <p>4121 Barfield Lane</p>
+                    <p>Indianpolis,IN,46225</p>
+                </div>
+                <div class="billing-item">
+                    <h3>Phone Number</h3>
+                    <p>(555) 555-5555</p>
+                </div>
+                <div class="billing-item">
+                    <h3>Email</h3>
+                    <p>rich.xyz@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="Description">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Donation</td>
+                            <td id="amount">₹45000</td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td>₹0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td id="total">₹45000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+   
+</body>
+
+<script>
+    let number = Math.floor(Math.random() * 9000 + 1000);
+    document.getElementById('invoice').innerHTML = number;
+
+    const date = new Date();
+    let invoiceDate = date.getDate();
+    let invoiceMonth = date.getMonth() + 1;
+    let invoiceYear = date.getFullYear();
+    let invoiceHours = date.getHours();
+    let invoiceMinutes = date.getMinutes();
+    let invoiceSeconds = date.getSeconds();
+
+    document.getElementById('date').innerHTML = `${invoiceDate}/${invoiceMonth}/${invoiceYear}`;
+    document.getElementById('time').innerHTML = `${invoiceHours}:${invoiceMinutes}:${invoiceSeconds}`; 
+
+
+    // javascript for copy rupees 
+    const rupeesValue = localStorage.getItem('rupees');
+    // console.log(greetingValue);
+    const amount = document.getElementById('amount');
+    amount.innerText = `₹${rupeesValue}`;
+    const totalAmount = document.getElementById('total');
+    totalAmount.innerText = `₹${rupeesValue}`;
+
+</script>
+
+</html>
