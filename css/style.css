@@ -52,7 +52,7 @@
 
 .container{
     height: 793px;
-    background: url(/images/children-donation.jpg) no-repeat;
+    background: url("images/children-donation.jpg") no-repeat;
     background-size: cover;
     padding: 40px;
 }
